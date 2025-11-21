@@ -40,8 +40,8 @@ class LeafNode(HTMLNode):
         if self.tag is None:
             return self.value
 
-        rendered_string = (
-            f"<{self.tag} {self.props_to_html()} >{self.value}</{self.tag}>"
-        )
+        if self.props is None:
+            return f"<{self.tag}>{self.value}</{self.tag}>"
 
-        return rendered_string
+        return f"<{self.tag} {self.props_to_html()} >{self.value}</{self.tag}>"
+

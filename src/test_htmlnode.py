@@ -1,6 +1,6 @@
 import unittest
 
-from htmlnode import HTMLNode
+from htmlnode import HTMLNode, LeafNode
 
 
 class TestHTMLNode(unittest.TestCase):
@@ -31,3 +31,24 @@ class TestHTMLNode(unittest.TestCase):
         )
         target = ' key1="value1" key2="value2" key3="value3"'
         self.assertEqual(target, node1.props_to_html())
+
+    def test_leaf_to_html_p(self):
+        node1 = LeafNode(
+            tag= "p",
+            value="This is a test paragraph for the test case!"
+        )
+        self.assertEqual(node1.to_html(), "<p>This is a test paragraph for the test case!</p>")
+
+    def test_leaf_to_html_h1(self):
+        node1 = LeafNode(
+            tag= "h1",
+            value="This is a test heading with level 1 for the test case!"
+        )
+        self.assertEqual(node1.to_html(), "<h1>This is a test heading with level 1 for the test case!</h1>")
+
+    def test_leaf_to_html_div(self):
+        node1 = LeafNode(
+            tag= "div",
+            value="This is a test div for the test case!"
+        )
+        self.assertEqual(node1.to_html(), "<div>This is a test div for the test case!</div>")
