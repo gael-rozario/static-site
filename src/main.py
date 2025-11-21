@@ -15,15 +15,15 @@ def main():
 
     div1 = ParentNode("div", children=[i1, i2, i3], props={"class": "headings"})
 
-
     p1 = LeafNode("p", "This is some first paragraph for testing")
     p2 = LeafNode("p", "This is some second paragraph for testing")
     p3 = LeafNode("p", "This is some group of paragraph for testing")
 
-    div2 = ParentNode("div", children=[p1,p2], props={"class": "paragraphs"})
+    div2 = ParentNode("div", children=[p1, p2], props={"class": "paragraphs"})
 
-
-    mixeddiv = ParentNode("div", children=[div1,div2,p3], props={"class": "heading_and_paragraphs"})
+    mixeddiv = ParentNode(
+        "div", children=[div1, div2, p3], props={"class": "heading_and_paragraphs"}
+    )
 
     print(mixeddiv.to_html())
 

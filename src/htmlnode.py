@@ -34,7 +34,7 @@ class LeafNode(HTMLNode):
 
     def to_html(self):
 
-        if self.value is None:
+        if self.value is None and self.tag != "img":
             raise ValueError
 
         if self.tag is None:
@@ -43,7 +43,10 @@ class LeafNode(HTMLNode):
         if self.props is None:
             return f"<{self.tag}>{self.value}</{self.tag}>"
 
-        return f"<{self.tag} {self.props_to_html()} >{self.value}</{self.tag}>"
+        if self.tag == "img":
+            return f"<{self.tag}{self.props_to_html()} >"
+
+        return f"<{self.tag}{self.props_to_html()} >{self.value}</{self.tag}>"
 
 
 class ParentNode(HTMLNode):
