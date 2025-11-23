@@ -38,8 +38,6 @@ class TextNode:
 
 def text_node_to_html_node(text_node):
 
-    node = None
-
     if text_node.text_type == "text":
         node = LeafNode(tag=None, value=text_node.text)
     if text_node.text_type == "bold":
@@ -54,5 +52,7 @@ def text_node_to_html_node(text_node):
         node = LeafNode(
             "img", None, props={"src": text_node.url, "alt": text_node.text}
         )
+    else:
+        node = LeafNode(tag=None, value=text_node.text)
 
     return node
